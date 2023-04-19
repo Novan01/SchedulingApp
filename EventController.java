@@ -56,4 +56,22 @@ public class EventController {
         }
         return null;
     }
+
+    public List<Event> findAll() throws SQLException {
+        String sql = "SELECT * FROM event";
+        PreparedStatement stmt = connection.prepareStatement(sql);
+        ResultSet result = stmt.executeQuery();
+        List<Event> events = new ArrayList<>();
+        while(result.next()) {
+            Event event = new Event();
+            event.setID(result.getInt("id"));
+            event.setName(result.getString("name"));
+            event.setDate(result.getDate("date"));
+            event.setDescription(result.getString("description"));
+            event.setPriority(result.getInt("priority"));
+            events.add(event);
+
+        }
+        return events;
+    }
 }
