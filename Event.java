@@ -3,9 +3,13 @@ import java.sql.*;
 import java.time.*;
 
 public class Event {
-    int id, priority;
-    Date time;
-    String name, description;
+    private int id, priority;
+    private Date time;
+    private String name, description;
+
+    public Event() {
+
+    }
 
     public Event(int i, int prio, Date t, String n, String d) {
         int id = i;
