@@ -1,0 +1,174 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+}
+.v1_2 {
+  width: 100%;
+  height: 1080px;
+  background: rgba(65,178,227,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v1_3 {
+  width: 100%;
+  height: 68px;
+  background: rgba(217,217,217,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.v2_15 {
+  width: 98px;
+  color: rgba(255,255,255,1);
+  position: absolute;
+  top: 471px;
+  left: 529px;
+  font-family: Inter;
+  font-weight: Italic;
+  font-size: 36px;
+  opacity: 1;
+  text-align: center;
+}
+.v2_12 {
+  width: 318px;
+  color: rgba(255,255,255,1);
+  position: absolute;
+  top: 77px;
+  left: 639px;
+  font-family: Inter;
+  font-weight: Italic;
+  font-size: 36px;
+  opacity: 1;
+  text-align: center;
+}
+.v1_10 {
+  width: 256px;
+  color: rgba(1,0,0,1);
+  position: absolute;
+  top: 10px;
+  left: 608px;
+  font-family: Inter;
+  font-weight: Italic;
+  font-size: 36px;
+  opacity: 1;
+  text-align: center;
+}
+.v2_58 {
+  width: 100%;
+  height: 334px;
+  background: url("../images/v2_58.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 147px;
+  left: 16px;
+  overflow: hidden;
+}
+.v2_140 {
+  width: 100%;
+  height: 572px;
+  background: url("../images/v2_140.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.v2_141 {
+  width: 100%;
+  height: 482px;
+  background: url("../images/v2_141.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 565px;
+  left: 20px;
+  overflow: hidden;
+}
+.v2_142 {
+  width: 100%;
+  height: 572px;
+  background: url("../images/v2_142.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
