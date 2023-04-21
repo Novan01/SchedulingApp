@@ -49,7 +49,13 @@ private DefaultTableModel model;
 		prevButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 // Move to the previous month
-                // ...
+                
+            }
+        });
+		nextButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                // Move to the next month
+                
             }
         });
 		addEventButton.addActionListener(new ActionListener() {
