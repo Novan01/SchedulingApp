@@ -15,6 +15,7 @@ import javax.swing.text.TabExpander;
 import javax.swing.border.*;
 import java.awt.ActiveEvent;
 import java.util.Locale;
+import java.net.*;
 
 public class calenderView {
 	
@@ -83,15 +84,27 @@ private DefaultTableModel model;
 		//setting up the frame
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setPreferredSize(new Dimension(800, 600));
-		frame.add(panel);
+		//frame.add(panel);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
+		//frame.setVisible(true);
 
 		//Initialize the calendar to the current month
 		Calendar calendar = Calendar.getInstance();
 		updateCalendar(calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR));
 
+
+		// try {
+		// 	JEditorPane editorPane = new JEditorPane();
+		// 	editorPane.setEditable(false);
+
+		// 	URL indexURL = getClass().getResource("/index.html");
+		// 	editorPane.setPage(indexURL);
+
+		// 	editorPane.setEditorKit(JEditorPane.createEditorKitForContentType("text/html"));
+		// 	URL cssURL = getClass().getResource("/main.css");
+		// 	editorPane.getEditorKit().get
+		// }
 	}
 
 	private void updateCalendar(int month, int year) {
