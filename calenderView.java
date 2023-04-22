@@ -84,10 +84,10 @@ private DefaultTableModel model;
 		//setting up the frame
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setPreferredSize(new Dimension(800, 600));
-		//frame.add(panel);
+		frame.add(panel);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
-		//frame.setVisible(true);
+		frame.setVisible(true);
 
 		//Initialize the calendar to the current month
 		Calendar calendar = Calendar.getInstance();
