@@ -53,9 +53,11 @@ private DefaultTableModel model;
                 
             }
         });
+		//not finished
 		nextButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                // Move to the next month
+                Calendar calendar = calendar.getInstance();
+				calendar.set(Calendar.MONTH, EventController.getPreviousMonth)
                 
             }
         });
