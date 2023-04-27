@@ -45,7 +45,6 @@ private DefaultTableModel model;
 				return false;
 			}
 		};
-		scrollPane = new JScrollPane(table);
 		
 		monthLabel.setFont(new Font("Arial", Font.BOLD, 20));
 		prevButton.addActionListener(new ActionListener() {
