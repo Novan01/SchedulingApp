@@ -30,8 +30,8 @@ private JButton addEventButton;
 private JTable table;
 private DefaultTableModel model;
 
+
 	public calenderView() {
-		System.out.println("Hello World");
 		frame = new JFrame("Calendar View");
 		panel = new JPanel(new BorderLayout());
 		monthLabel = new JLabel("", SwingConstants.CENTER);
@@ -45,7 +45,8 @@ private DefaultTableModel model;
 				return false;
 			}
 		};
-
+		scrollPane = new JScrollPane(table);
+		
 		monthLabel.setFont(new Font("Arial", Font.BOLD, 20));
 		prevButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
@@ -56,8 +57,6 @@ private DefaultTableModel model;
 		//not finished
 		nextButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                Calendar calendar = calendar.getInstance();
-				calendar.set(Calendar.MONTH, EventController.getPreviousMonth)
                 
             }
         });
@@ -95,18 +94,6 @@ private DefaultTableModel model;
 		Calendar calendar = Calendar.getInstance();
 		updateCalendar(calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR));
 
-
-		// try {
-		// 	JEditorPane editorPane = new JEditorPane();
-		// 	editorPane.setEditable(false);
-
-		// 	URL indexURL = getClass().getResource("/index.html");
-		// 	editorPane.setPage(indexURL);
-
-		// 	editorPane.setEditorKit(JEditorPane.createEditorKitForContentType("text/html"));
-		// 	URL cssURL = getClass().getResource("/main.css");
-		// 	editorPane.getEditorKit().get
-		// }
 	}
 
 	private void updateCalendar(int month, int year) {
@@ -169,38 +156,6 @@ private DefaultTableModel model;
 
 	public static void main(String[] args) {
 		new calenderView();
-	}
-	
-	public static void selection() throws SQLException
-	{
-		int count = 0;
-		//Tries to get the data from the table using the variable count
-		String sql = "SELECT * FROM event where count = " + count;
-		//connects the statement to SQL database
-		Statement statement = 	connection.createStatement();
-		//puts the data we get into result from sql
-		ResultSet result  = statement.executeQuery(sql);
-		//loops through the table till all the data is printed.
-		while(result.next())
-		{
-			
-			int id = result.getInt("id");
-			String name  = result.getString("name");
-			Date date = result.getDate("date");
-			String description = result.getString("description");
-			int priority  = result.getInt("prioirity");
-			
-			System.out.println("ID - "+id+"\n"
-			+"Name - "+name +"\n"
-			+"Date - "+ date +"\n"
-			+"Description - "+description+"\n"
-			+"Priority Level - "+priority+"\n");
-			//increments the count
-			count++;
-		}
-		
-	}
-	
-	
+	}	
 	
 }
