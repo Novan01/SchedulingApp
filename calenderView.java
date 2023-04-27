@@ -95,18 +95,6 @@ private DefaultTableModel model;
 
 	}
 
-	private void updateCalendar(int month, int year) {
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(Calendar.MONTH, month);
-		calendar.set(Calendar.YEAR, year);
-
-		if(monthLabel == null) {
-			return;
-		}
-
-		//update the month label
-		monthLabel.setText(calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US) + " " + year);
-
 		//Clear the table model
 		model.setRowCount(0);
 
