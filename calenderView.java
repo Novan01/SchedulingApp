@@ -1,8 +1,7 @@
-
-
 import java.awt.event.WindowListener;
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
+import java.awt.desktop.AppHiddenEvent;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -15,7 +14,6 @@ import javax.swing.text.TabExpander;
 import javax.swing.border.*;
 import java.awt.ActiveEvent;
 import java.util.Locale;
-import java.net.*;
 
 public class calenderView {
 	
@@ -29,9 +27,15 @@ private JButton nextButton;
 private JButton addEventButton;
 private JTable table;
 private DefaultTableModel model;
+private int currentMonth;
+private int currentYear;
 
 
 	public calenderView() {
+		Calendar calendar = Calendar.getInstance();
+		currentMonth = calendar.get(Calendar.MONTH);
+		currentYear = calendar.get(Calendar.YEAR);
+		updateCalendar(currentMonth, currentYear);
 		frame = new JFrame("Calendar View");
 		panel = new JPanel(new BorderLayout());
 		monthLabel = new JLabel("", SwingConstants.CENTER);
@@ -49,21 +53,33 @@ private DefaultTableModel model;
 		monthLabel.setFont(new Font("Arial", Font.BOLD, 20));
 		prevButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                // Move to the previous month
-                
+                if(currentMonth == Calendar.JANUARY) {
+					currentMonth = Calendar.DECEMBER;
+					currentYear--;
+				} 
+				else {
+					currentMonth--;
+				}
+				updateCalendar(currentMonth, currentYear);
             }
         });
 		//not finished
 		nextButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                
+                if(currentMonth == Calendar.DECEMBER) {
+					currentMonth = Calendar.JANUARY;
+					currentYear++;
+				} 
+				else {
+					currentMonth++;
+				}
+				updateCalendar(currentMonth, currentYear);
             }
         });
 		addEventButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                // Open the Add Event dialog
-                // ...
-            }
+                
+			}
         });
 
 		//adding components to the panel
@@ -90,7 +106,6 @@ private DefaultTableModel model;
 		frame.setVisible(true);
 
 		//Initialize the calendar to the current month
-		Calendar calendar = Calendar.getInstance();
 		updateCalendar(calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR));
 
 	}
@@ -154,6 +169,7 @@ private DefaultTableModel model;
 	}
 
 	public static void main(String[] args) {
+		//create login page first - establish sql connection
 		new calenderView();
 	}	
 	
