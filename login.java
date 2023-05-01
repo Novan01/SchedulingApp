@@ -6,7 +6,7 @@ import java.sql.*;
 import javax.swing.*;
 
 
-public class login extends JFrame {
+public class Login extends JFrame {
     final private Font mainFont = new Font("Arial", Font.BOLD, 18);
     JTextField tfUser;
     JPasswordField pfPassword;
