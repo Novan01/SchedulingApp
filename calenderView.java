@@ -63,7 +63,7 @@ private int currentYear;
 				updateCalendar(currentMonth, currentYear);
             }
         });
-		//not finished
+		//button to move to next month
 		nextButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 if(currentMonth == Calendar.DECEMBER) {
@@ -78,7 +78,8 @@ private int currentYear;
         });
 		addEventButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                
+				CreateEventView createEvent = new CreateEventView();
+				
 			}
         });
 
