@@ -84,7 +84,7 @@ private int currentYear;
 				CreateEventView createEvent = new CreateEventView();
 				Event newEvent = new Event(createEvent.getName(), createEvent.getEventDescription(), createEvent.getEventPriority(), createEvent.getEventDate());
 				try {
-                    Connection conn = DriverManager.getConnection("jbdc:mysql://192.168.21.14:3306/schedulingapp", "root", "$pe11Bre@k2020.");
+                    Connection conn = DriverManager.getConnection("jbdc:mysql://192.168.21.14:3306/schedulingapp", "root", "**********");
                     EventController eventController = new EventController(conn);
                     eventController.create(newEvent);
                     conn.close();
@@ -104,7 +104,7 @@ private int currentYear;
 				if(row >= 0 && col >= 0) {
 					Object value = table.getValueAt(row, col);
 					if(value instanceof Date) {
-						Date selectedDate = (Date) value;
+						Date selectedDate = (Date) value; //the selected date value
 						
 					}
 				}

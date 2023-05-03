@@ -18,6 +18,7 @@ public class CreateEventView extends JFrame {
     private JLabel nameLabel, descriptionLabel, priorityLabel, dateLabel;
     private JSpinner prioritySpinner;
     private JButton saveButton;
+    public Event newEvent = new Event();
 
     public CreateEventView() {
         super("Add Event");
@@ -94,7 +95,7 @@ public class CreateEventView extends JFrame {
 				//have the save button create the new object and 
                 Event newEvent = waitForInput();
                 try {
-                    Connection conn = DriverManager.getConnection("jbdc:mysql://192.168.21.14:3306/schedulingapp", "root", "$pe11Bre@k2020.");
+                    Connection conn = DriverManager.getConnection("jbdc:mysql://192.168.21.14:3306/schedulingapp", "root", "**********");
                     EventController eventController = new EventController(conn);
                     eventController.create(newEvent);
                     conn.close();
@@ -146,17 +147,18 @@ public class CreateEventView extends JFrame {
             }
         }
 
-        Event newEvent = new Event();
+        
         newEvent.setName(nameField.getText());
         newEvent.setDescription(descriptionField.getText());
         newEvent.setPriority((int) prioritySpinner.getValue());
-        newEvent.setDate(convertStringToDate(dateField.getText()));
+        //newEvent.setDate(convertStringToDate(dateField.getText()));
 
         return newEvent;
     }
 
+    //returning unparsable date error
     public Date convertStringToDate(String dateString) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy");
         try {
             java.util.Date parsed = format.parse(dateString);
             java.sql.Date sqlDate = new java.sql.Date(parsed.getTime());
@@ -169,4 +171,5 @@ public class CreateEventView extends JFrame {
         return null;
          
     }
+
 }
