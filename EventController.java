@@ -75,7 +75,4 @@ public class EventController {
         return events;
     }
 
-    public void createEvent() {
-        
-    }
 }

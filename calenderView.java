@@ -1,4 +1,3 @@
-import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
 import java.sql.*;
 import java.time.LocalDate;
@@ -30,13 +29,19 @@ private int currentYear;
 		currentMonth = calendar.get(Calendar.MONTH);
 		currentYear = calendar.get(Calendar.YEAR);
 		updateCalendar(currentMonth, currentYear);
+
+		//create panel and frame and month label
 		frame = new JFrame("Calendar View");
 		panel = new JPanel(new BorderLayout());
 		monthLabel = new JLabel("", SwingConstants.CENTER);
+		
+		//create the button's
 		prevButton = new JButton("<");
 		nextButton = new JButton(">");
 		addEventButton = new JButton("Add Event");
+		
 		table = new JTable();
+		
 		model = new DefaultTableModel() {
 			@Override
 			public boolean isCellEditable(int row, int column) {
@@ -45,6 +50,8 @@ private int currentYear;
 		};
 		
 		monthLabel.setFont(new Font("Arial", Font.BOLD, 20));
+		
+		//button to move to previous month
 		prevButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 if(currentMonth == Calendar.JANUARY) {
@@ -57,6 +64,7 @@ private int currentYear;
 				updateCalendar(currentMonth, currentYear);
             }
         });
+		
 		//button to move to next month
 		nextButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
@@ -70,12 +78,30 @@ private int currentYear;
 				updateCalendar(currentMonth, currentYear);
             }
         });
+		
+		//button to add new event
 		addEventButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
 				CreateEventView createEvent = new CreateEventView();
 				
 			}
         });
+
+		//method and mouse listener to populate the dateField in createEventView
+		table.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				int row = table.rowAtPoint(e.getPoint());
+				int col = table.rowAtPoint(e.getPoint());
+				if(row >= 0 && col >= 0) {
+					Object value = table.getValueAt(row, col);
+					if(value instanceof Date) {
+						Date selectedDate = (Date) value;
+						
+					}
+				}
+			}
+			
+		});
 
 		//adding components to the panel
 		panel.add(monthLabel, BorderLayout.NORTH);
@@ -136,7 +162,7 @@ private int currentYear;
 				column = 0;
 			}
 			if(model.getRowCount() <= row) {
-				model.addRow(new Object[] {null, null, null, null, null, null, null});
+				model.addRow(new Object[] {null,null,null,null,null,null,null}); //this populated the calendar with objects
 			}
 			model.setValueAt(day, row, column);
 			column++;

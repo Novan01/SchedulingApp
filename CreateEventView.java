@@ -1,6 +1,16 @@
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.sql.Connection;
+import java.sql.*;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -31,7 +41,7 @@ public class CreateEventView extends JFrame {
 
         dateLabel = new JLabel("Date");
         dateField = new JTextField(10);
-        dateField.setEditable(false); //the user will select from the calendar view
+        dateField.setEditable(true); //the user will select from the calendar view
 
         saveButton = new JButton("Save");
 
@@ -81,10 +91,28 @@ public class CreateEventView extends JFrame {
         gc.anchor = GridBagConstraints.CENTER;
         add(saveButton, gc);
 
+        saveButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+				//have the save button create the new object and 
+                Event newEvent = waitForInput();
+                try {
+                    Connection conn = DriverManager.getConnection("jbdc:mysql://localhost:3306/schedulingapp", "patrick", "password");
+                    EventController eventController = new EventController(conn);
+                    eventController.create(newEvent);
+                    conn.close();
+                }
+                catch(SQLException e) {
+                    e.printStackTrace();
+                }
+                
+			}
+        });
+
         pack();
         setVisible(true);
 
     }
+    
 
     // getter methods for the input fields
     public String getEventName() {
@@ -104,18 +132,43 @@ public class CreateEventView extends JFrame {
     }
 
     // setter method for the event date field
-    public void setEventDate(String date) {
-        dateField.setText(date);
+    public void setEventDate(Date date) {
+        dateField.setText(date.toString());
     }
-
-    // add an ActionListener to the save button
-    public void addSaveButtonListener(ActionListener listener) {
-        saveButton.addActionListener(listener);
-    }
+    
 
     public Event waitForInput() {
+        setVisible(true);
+        while(isVisible()) {
+            try {
+                Thread.sleep(100);
+            }
+            catch(InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         Event newEvent = new Event();
+        newEvent.setName(nameField.getText());
+        newEvent.setDescription(descriptionField.getText());
+        newEvent.setPriority((int) prioritySpinner.getValue());
+        newEvent.setDate(convertStringToDate(dateField.getText()));
+
         return newEvent;
-    
+    }
+
+    public Date convertStringToDate(String dateString) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            java.util.Date parsed = format.parse(dateString);
+            java.sql.Date sqlDate = new java.sql.Date(parsed.getTime());
+            return sqlDate;
+        }
+        catch(ParseException e) {
+            e.printStackTrace();
+        }
+        
+        return null;
+         
     }
 }
