@@ -11,8 +11,7 @@ public class Event {
 
     }
 
-    public Event(int i, int prio, Date t, String n, String d) {
-        int id = i;
+    public Event(String n, String d, int prio, Date t) {
         int priority = prio;
         Date time = t;
         String name = n;

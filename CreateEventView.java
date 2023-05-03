@@ -2,6 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.*;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -17,7 +18,7 @@ public class CreateEventView extends JFrame {
     public CreateEventView() {
         super("Add Event");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setPreferredSize(new Dimension(400, 200));
+        setPreferredSize(new Dimension(800, 200));
         setLocationRelativeTo(null);
 
         nameLabel = new JLabel("Name");
@@ -114,5 +115,11 @@ public class CreateEventView extends JFrame {
     // add an ActionListener to the save button
     public void addSaveButtonListener(ActionListener listener) {
         saveButton.addActionListener(listener);
+    }
+
+    public Event waitForInput() {
+        Event newEvent = new Event();
+        return newEvent;
+    
     }
 }
