@@ -61,7 +61,7 @@ public class Login extends JFrame {
         User user = null;
 
         //change this
-        final String DB_URL = "jdbc:mysql://localhost/MyStore?serverTimezone=UTC";
+        final String DB_URL = "jdbc:mysql://localhost:3306/schedulingapp";
         final String USERNAME = "root";
         final String PASSWORD = "";
 

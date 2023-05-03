@@ -171,7 +171,7 @@ private int currentYear;
 				column = 0;
 			}
 			if(model.getRowCount() <= row) {
-				model.addRow(new Object[] {null,null,null,null,null,null,null}); //this populated the calendar with objects
+				model.addRow(new Object[] {"Monday",null,null,null,null,null,null}); //this populated the calendar with objects
 			}
 			model.setValueAt(day, row, column);
 			column++;
