@@ -6,8 +6,6 @@ import java.text.ParseException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.time.LocalDate;
 import java.sql.Connection;
 import java.sql.*;
 
@@ -96,7 +94,7 @@ public class CreateEventView extends JFrame {
 				//have the save button create the new object and 
                 Event newEvent = waitForInput();
                 try {
-                    Connection conn = DriverManager.getConnection("jbdc:mysql://localhost:3306/schedulingapp", "patrick", "password");
+                    Connection conn = DriverManager.getConnection("jbdc:mysql://192.168.21.14:3306/schedulingapp", "root", "$pe11Bre@k2020.");
                     EventController eventController = new EventController(conn);
                     eventController.create(newEvent);
                     conn.close();
@@ -127,8 +125,8 @@ public class CreateEventView extends JFrame {
         return (int) prioritySpinner.getValue();
     }
 
-    public String getEventDate() {
-        return dateField.getText();
+    public Date getEventDate() {
+        return convertStringToDate(dateField.getText());
     }
 
     // setter method for the event date field

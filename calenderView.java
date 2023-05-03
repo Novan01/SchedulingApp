@@ -11,7 +11,6 @@ import java.util.Locale;
 public class calenderView {
 	
 //USE JDBC TO CONNECT TO EVENT DATABASE TO GET THE NAME, DATE, PRIORITY, AND DESCRIPTION
-private static Connection conn = null;
 private JFrame frame;
 private JPanel panel;
 private JLabel monthLabel;
@@ -83,6 +82,16 @@ private int currentYear;
 		addEventButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
 				CreateEventView createEvent = new CreateEventView();
+				Event newEvent = new Event(createEvent.getName(), createEvent.getEventDescription(), createEvent.getEventPriority(), createEvent.getEventDate());
+				try {
+                    Connection conn = DriverManager.getConnection("jbdc:mysql://192.168.21.14:3306/schedulingapp", "root", "$pe11Bre@k2020.");
+                    EventController eventController = new EventController(conn);
+                    eventController.create(newEvent);
+                    conn.close();
+                }
+                catch(SQLException e) {
+                    e.printStackTrace();
+                }
 				
 			}
         });
