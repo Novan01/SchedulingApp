@@ -1,24 +1,18 @@
-import java.awt.event.WindowListener;
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
-import java.awt.desktop.AppHiddenEvent;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.concurrent.CancellationException;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.table.*;
-import javax.swing.text.TabExpander;
-import javax.swing.border.*;
-import java.awt.ActiveEvent;
 import java.util.Locale;
 
 public class calenderView {
 	
 //USE JDBC TO CONNECT TO EVENT DATABASE TO GET THE NAME, DATE, PRIORITY, AND DESCRIPTION
-private static Connection connection = null;
+private static Connection conn = null;
 private JFrame frame;
 private JPanel panel;
 private JLabel monthLabel;

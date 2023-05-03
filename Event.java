@@ -1,6 +1,4 @@
 import java.sql.Date;
-import java.sql.*;
-import java.time.*;
 
 public class Event {
     private int id, priority;
@@ -12,10 +10,10 @@ public class Event {
     }
 
     public Event(String n, String d, int prio, Date t) {
-        int priority = prio;
-        Date time = t;
-        String name = n;
-        String description = d;
+         priority = prio;
+         time = t;
+         name = n;
+         description = d;
 
     }
 

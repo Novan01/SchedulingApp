@@ -1,12 +1,8 @@
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
-
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 public class CreateEventView extends JFrame {
     final private Font mainFont = new Font("Arial", Font.BOLD, 18);
