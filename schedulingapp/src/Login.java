@@ -8,30 +8,24 @@ import javax.swing.*;
 
 public class Login extends JFrame {
     final private Font mainFont = new Font("Arial", Font.BOLD, 18);
+    JLabel usernameLabel;
+    JLabel passwordLabel;
     JTextField tfUser;
     JPasswordField pfPassword;
 
-    public void initialize() {
-        JLabel lblLogin = new JLabel("Login", SwingConstants.CENTER);
-        lblLogin.setFont(mainFont);
-        
-        JLabel lblUsername = new JLabel("Username");
-        lblUsername.setFont(mainFont);
+    public Login() {
+        super("Login");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setPreferredSize(new Dimension(400, 200));
+        setLocationRelativeTo(null);
 
-        tfUser = new JTextField();
-        tfUser.setFont(mainFont);
+        usernameLabel = new JLabel("Username");
+        tfUser = new JTextField(20);
+        usernameLabel.setFont(mainFont);
 
-        JLabel lblPassword = new JLabel("Password");
-        lblPassword.setFont(mainFont);
-
-        //create form panel
-        JPanel formPanel = new JPanel();
-        formPanel.setLayout(new GridLayout(0,1,10,10));
-        formPanel.add(lblLogin);
-        formPanel.add(lblUsername);
-        formPanel.add(tfUser);
-        formPanel.add(lblPassword);
-        formPanel.add(pfPassword);
+        passwordLabel = new JLabel("Password");
+        pfPassword = new JPasswordField(20);
+        passwordLabel.setFont(mainFont);
 
         //Button panel
         JButton btnLogin = new JButton("Login");
@@ -42,55 +36,70 @@ public class Login extends JFrame {
                 String username = tfUser.getText();
                 String password = String.valueOf(pfPassword.getPassword());
 
-                User user = getAuthenticatedUser(username, password);
+                //User user = getAuthenticatedUser(username, password);
             }
         });
         //Initialize the fram
-        add(formPanel, BorderLayout.NORTH);
+        setLayout(new GridBagLayout());
+        GridBagConstraints gc = new GridBagConstraints();
+        gc.gridx = 0;
+        gc.gridy = 0;
+        gc.anchor = GridBagConstraints.LINE_END;
+        gc.insets = new Insets(5,5,5,5);
+        add(usernameLabel, gc);
 
-        setTitle("Login");
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        setSize(800,600);
-        setLocationRelativeTo(null);
+        gc.gridx++;
+        gc.anchor = GridBagConstraints.LINE_START;
+        add(tfUser, gc);
+
+        gc.gridx = 0;
+        gc.gridy++;
+        gc.anchor = GridBagConstraints.LINE_END;
+        add(passwordLabel, gc);
+
+        gc.gridx++;
+        gc.anchor = GridBagConstraints.LINE_START;
+        add(pfPassword, gc);
+
+        pack();
         setVisible(true);
-
     }
 
 
-    private User getAuthenticatedUser(String email, String password) {
-        User user = null;
+    // private User getAuthenticatedUser(String email, String password) {
+    //     User user = null;
 
-        //change this
-        final String DB_URL = "jdbc:mysql://localhost:3306/schedulingapp";
-        final String USERNAME = "root";
-        final String PASSWORD = "";
+    //     //change this
+    //     final String DB_URL = "jdbc:mysql://localhost:3306/schedulingapp";
+    //     final String USERNAME = "root";
+    //     final String PASSWORD = "";
 
-        try{
-            Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
-            // Connected to database successfully...
+    //     try{
+    //         Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+    //         // Connected to database successfully...
 
-            String sql = "SELECT * FROM users WHERE username=? AND password=?";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, email);
-            preparedStatement.setString(2, password);
+    //         String sql = "SELECT * FROM users WHERE username=? AND password=?";
+    //         PreparedStatement preparedStatement = conn.prepareStatement(sql);
+    //         preparedStatement.setString(1, email);
+    //         preparedStatement.setString(2, password);
 
-            ResultSet resultSet = preparedStatement.executeQuery();
+    //         ResultSet resultSet = preparedStatement.executeQuery();
 
-            if (resultSet.next()) {
-                user = new User();
-                user.username = resultSet.getString("username");
-                user.password = resultSet.getString("password");
-            }
+    //         if (resultSet.next()) {
+    //             user = new User();
+    //             user.username = resultSet.getString("username");
+    //             user.password = resultSet.getString("password");
+    //         }
 
-            preparedStatement.close();
-            conn.close();
+    //         preparedStatement.close();
+    //         conn.close();
 
-        }catch(Exception e){
-            System.out.println("Database connexion failed!");
-        }
+    //     }catch(Exception e){
+    //         System.out.println("Database connexion failed!");
+    //     }
 
 
-        return user;
-    }
+    //     return user;
+    // }
     
 }

@@ -200,7 +200,8 @@ private int currentYear;
 
 	public static void main(String[] args) {
 		//create login page first - establish sql connection
-		new calenderView();
+		new Login();
+		//new calenderView();
 	}	
 	
 }
