@@ -8,7 +8,7 @@ public class SQLConnection
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection con=DriverManager.getConnection("jdbc:mysql://192.168.21.24:3306/schedulingapp","username","password");
                     Statement stmt=con.createStatement();
-                    ResultSet rs=stmt.executeQuery("select from events");
+                    ResultSet rs=stmt.executeQuery("SELECT * FROM events");
                     while(rs.next())
                             System.out.println();
                 con.close();

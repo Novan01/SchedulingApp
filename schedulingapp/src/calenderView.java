@@ -198,10 +198,11 @@ private int currentYear;
 		}
 	}
 
+	//might wanna move this somewhere else
 	public static void main(String[] args) {
 		//create login page first - establish sql connection
 		new Login();
-		//new calenderView();
+		new calenderView();
 	}	
 	
 }
