@@ -1,6 +1,7 @@
-## Getting Started
+## The Project
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+This is our scheduling app that is supposed to help a user create and schedule their events and tasks through a calendar view. We have built this project using java and SQL.
+
 
 ## Folder Structure
 
@@ -11,8 +12,18 @@ The workspace contains two folders by default, where:
 
 Meanwhile, the compiled output files will be generated in the `bin` folder by default.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
 
-## Dependency Management
+## Information on the Project
+Currently, not all aspects of the project work
+Use Cases that have been created
+Calendar View - file called calendarView.java
+Create Event objects and view - files Event.java, EventController.java, CreateEventView.java
+Create user login - Login.java, SQLConnection.java
+Create user object - User.java
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## What doesnt work
+When creating an event, the event does not get sent to the SQL database and pressing Save will crash the application
+When logging in, the SQL database of users does not work yet so no login attempts can fully be accessed
+Selecting a day and creating an event on that day results in a parsing error
+
+

@@ -99,6 +99,7 @@ public class CreateEventView extends JFrame {
                     EventController eventController = new EventController(conn);
                     eventController.create(newEvent);
                     conn.close();
+                    setVisible(false);
                 }
                 catch(SQLException e) {
                     e.printStackTrace();
