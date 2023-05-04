@@ -36,7 +36,7 @@ public class Login extends JFrame {
                 String username = tfUser.getText();
                 String password = String.valueOf(pfPassword.getPassword());
 
-                //User user = getAuthenticatedUser(username, password);
+                boolean isAuth = getAuthenticatedUser(username, password);
             }
         });
         //Initialize the fram
@@ -61,21 +61,23 @@ public class Login extends JFrame {
         gc.anchor = GridBagConstraints.LINE_START;
         add(pfPassword, gc);
 
+        gc.gridx = 1;
+        gc.gridy = 2;
+        gc.anchor = GridBagConstraints.CENTER;
+        add(btnLogin, gc);
+
         pack();
         setVisible(true);
     }
 
 
-    private User getAuthenticatedUser(String username, String password) {
-        User user = null;
+    public boolean getAuthenticatedUser(String username, String password) {
 
-        //change this
-        final String DB_URL = "jdbc:mysql://192.168.21.14:3306/schedulingapp";
-        final String USERNAME = "root";
-        final String PASSWORD = "";
+        //url connection using jbdc to the sql database | doesnt work yet | no jdbc drivers set up
+        final String DB_URL = "jdbc:mysql:\\192.168.21.14:3306\schedulingapp";
 
         try{
-            Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+            Connection conn = DriverManager.getConnection(DB_URL, username, password);
             // Connected to database successfully...
 
             String sql = "SELECT * FROM users WHERE username=? AND password=?";
@@ -86,20 +88,18 @@ public class Login extends JFrame {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                user = new User();
-                user.username = resultSet.getString("username");
-                user.password = resultSet.getString("password");
+                System.out.println("Valid login");
+                return true;
             }
 
             preparedStatement.close();
             conn.close();
 
         }catch(Exception e){
-            System.out.println("Database connexion failed!");
+            System.out.println("Wrong username or password! Please try again");
         }
 
-
-        return user;
+        return false;
     }
     
 }
