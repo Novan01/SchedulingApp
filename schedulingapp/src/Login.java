@@ -66,40 +66,40 @@ public class Login extends JFrame {
     }
 
 
-    // private User getAuthenticatedUser(String email, String password) {
-    //     User user = null;
+    private User getAuthenticatedUser(String username, String password) {
+        User user = null;
 
-    //     //change this
-    //     final String DB_URL = "jdbc:mysql://localhost:3306/schedulingapp";
-    //     final String USERNAME = "root";
-    //     final String PASSWORD = "";
+        //change this
+        final String DB_URL = "jdbc:mysql://192.168.21.14:3306/schedulingapp";
+        final String USERNAME = "root";
+        final String PASSWORD = "";
 
-    //     try{
-    //         Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
-    //         // Connected to database successfully...
+        try{
+            Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+            // Connected to database successfully...
 
-    //         String sql = "SELECT * FROM users WHERE username=? AND password=?";
-    //         PreparedStatement preparedStatement = conn.prepareStatement(sql);
-    //         preparedStatement.setString(1, email);
-    //         preparedStatement.setString(2, password);
+            String sql = "SELECT * FROM users WHERE username=? AND password=?";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
 
-    //         ResultSet resultSet = preparedStatement.executeQuery();
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-    //         if (resultSet.next()) {
-    //             user = new User();
-    //             user.username = resultSet.getString("username");
-    //             user.password = resultSet.getString("password");
-    //         }
+            if (resultSet.next()) {
+                user = new User();
+                user.username = resultSet.getString("username");
+                user.password = resultSet.getString("password");
+            }
 
-    //         preparedStatement.close();
-    //         conn.close();
+            preparedStatement.close();
+            conn.close();
 
-    //     }catch(Exception e){
-    //         System.out.println("Database connexion failed!");
-    //     }
+        }catch(Exception e){
+            System.out.println("Database connexion failed!");
+        }
 
 
-    //     return user;
-    // }
+        return user;
+    }
     
 }
