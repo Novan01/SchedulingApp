@@ -1,7 +1,7 @@
 ## The Project
 
 This is our scheduling app that is supposed to help a user create and schedule their events and tasks through a calendar view. We have built this project using java and SQL.
-
+All code written by Patrick Anderson
 
 ## Folder Structure
 
